@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Erwann",
+      "lastname": "Guillevic",
+      "email": "erwann.guillevic@ynov.com",
+      "password": "p@ssword"
+    },
+    {
+      "id": 2,
+      "firstname": "Test",
+      "lastname": "",
+      "email": "test-address@mail.com",
+      "password": "test"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "film": "tt0458339",
+      "content": "Super film, je recommande !!"
+    },
+    {
+      "id": 2,
+      "film": "tt1653823",
+      "content": "Passable ..."
+    },
+    {
+      "id": 3,
+      "film": "tt0093773",
+      "content": "Se laisse regarder !"
+    },
+    {
+      "id": 4,
+      "film": "tt0093773",
+      "content": "Plutôt comique l'histoire ;)"
+    }
+  ]
+}
