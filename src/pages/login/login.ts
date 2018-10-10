@@ -43,6 +43,7 @@ export class LoginPage {
         if (data[i].email == email && data[i].password == password) {
           console.log(data[i]);
           this.storage.set('name', data[i].firstname);
+          this.storage.set('logged', true);
           //storage.set('lastname', data[i].lastname);
           //storage.set('email', data[i].email);
           //this.setItems();
