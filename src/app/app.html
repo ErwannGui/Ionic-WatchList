@@ -12,6 +12,7 @@
         {{p.title}}
       </button>
     </ion-list>
+    <button *ngIf="name" float-right ion-button color="primary" (click)="doLogout()">Logout</button>
   </ion-content>
 
 </ion-menu>
