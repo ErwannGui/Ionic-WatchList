@@ -50,8 +50,15 @@ export class ItemDetailsPage {
     });
   }
 
-  deleteComment(commentId: number) {
-  	this.apiProvider.deleteCommentById(commentId);
+  deleteComment(comment: Comment) {
+  	this.apiProvider.deleteCommentById(comment.id);
+  	for( let i = 0; i < this.comments.length; i++) { 
+  		console.log(this.comments[i].id+' - '+comment.id);
+		   if ( this.comments[i].id == comment.id) {
+		     this.comments.splice(i, 1);
+		     console.log(this.comments);
+		   } else console.log('Comment not found');
+		}
   }
 
   createComment() {
@@ -86,7 +93,7 @@ export class ItemDetailsPage {
         {
           text: 'Agree',
           handler: () => {
-            this.deleteComment(comment.id);
+            this.deleteComment(comment);
           }
         }
       ]

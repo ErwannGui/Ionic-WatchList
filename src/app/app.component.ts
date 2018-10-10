@@ -22,8 +22,8 @@ export class MyApp {
   // make LoginPage the root (or first) page
   rootPage = HelloIonicPage;
   pages: Array<{title: string, component: any}>;
-  const logged: boolean;
-  const name: string;
+  logged: boolean;
+  name: string;
 
   constructor(
     public platform: Platform,
@@ -39,30 +39,26 @@ export class MyApp {
         console.log('No session defined '+val);
         this.logged = false;
         this.name = '';
+        this.pages = [
+          { title: 'Hello Ionic', component: HelloIonicPage },
+          { title: 'My First List', component: ListPage },
+          { title: 'Login', component: LoginPage }
+        ];
       } else {
         this.storage.get('name').then((value) => {
           this.name = value;
           this.logged = true;
           console.log(this.name+' '+this.logged);
+          if (this.logged === true) {
+            this.pages = [
+              { title: 'Hello Ionic', component: HelloIonicPage },
+              { title: 'My First List', component: ListPage }
+            ];
+          } 
           //this.isLogged(this.name);
         });
       }
     })
-
-    if (this.logged === true) {
-      this.pages = [
-        { title: 'Hello Ionic', component: HelloIonicPage },
-        { title: 'My First List', component: ListPage }
-      ];
-    } else {
-      console.log(this.logged);
-    // set our app's pages
-      this.pages = [
-        { title: 'Hello Ionic', component: HelloIonicPage },
-        { title: 'My First List', component: ListPage },
-        { title: 'Login', component: LoginPage }
-      ];
-    }
   }
 
   initializeApp() {
@@ -94,5 +90,6 @@ export class MyApp {
       console.log('Session is now '+val);
     });
     this.storage.set('logged', false);
+    window.location.reload();
   }
 }

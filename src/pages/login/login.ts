@@ -44,6 +44,7 @@ export class LoginPage {
           console.log(data[i]);
           this.storage.set('name', data[i].firstname);
           this.storage.set('logged', true);
+          window.location.reload();
           //storage.set('lastname', data[i].lastname);
           //storage.set('email', data[i].email);
           //this.setItems();

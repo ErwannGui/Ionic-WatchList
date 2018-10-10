@@ -45,7 +45,7 @@
         <form [formGroup]="commentForm">
           <ion-item>
             <ion-label floating>Leave a comment ...</ion-label>
-            <ion-input [formControl]="commentForm.controls['commentContent']" type="text"></ion-input>
+            <ion-input [formControl]="commentForm.controls['commentContent']" type="text" value=""></ion-input>
             <button item-right clear ion-button (click)="createComment()">
               <ion-icon name="send" style="width: 100%; font-size: 4rem!important;"></ion-icon>
             </button>
