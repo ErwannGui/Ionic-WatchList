@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { ConsoleLoggerService } from '../services/logger/console-logger.service';
 import { LoggerService } from '../services/logger/logger.service';
 import { LoginPage } from '../pages/login/login';
+import { SubscriptionPage } from '../pages/subscription/subscription';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
@@ -21,6 +22,7 @@ import { DataProvider } from '../providers/data/data';
   declarations: [
     MyApp,
     LoginPage,
+    SubscriptionPage,
     HelloIonicPage,
     ItemDetailsPage,
     ListPage
@@ -35,6 +37,7 @@ import { DataProvider } from '../providers/data/data';
   entryComponents: [
     MyApp,
     LoginPage,
+    SubscriptionPage,
     HelloIonicPage,
     ItemDetailsPage,
     ListPage

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ApiProvider } from '../../providers/api/api';
 import { HelloIonicPage } from '../../pages/hello-ionic/hello-ionic';
+import { SubscriptionPage } from '../../pages/subscription/subscription';
 
 import { Storage } from '@ionic/storage';
 
@@ -65,6 +66,10 @@ export class LoginPage {
   redirectToRoot() {
     this.navCtrl.setRoot(HelloIonicPage);
     this.navCtrl.popToRoot();
+  }
+
+  goToPage() {
+    this.navCtrl.push(SubscriptionPage);
   }
 
 }

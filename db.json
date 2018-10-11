@@ -13,6 +13,20 @@
       "lastname": "",
       "email": "test-address@mail.com",
       "password": "test"
+    },
+    {
+      "id": 3,
+      "firstname": "Mick",
+      "lastname": "Ghloel",
+      "email": "mick.ghloel@mg.com",
+      "password": "p@ssw0rd"
+    },
+    {
+      "id": 4,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "test",
+      "password": "test"
     }
   ],
   "comments": [

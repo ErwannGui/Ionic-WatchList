@@ -35,6 +35,7 @@ export class MyApp {
     this.initializeApp();
 
     this.storage.get('logged').then((val) => {
+      console.log(val);
       if (val !== true) {
         console.log('No session defined '+val);
         this.logged = false;
@@ -86,10 +87,10 @@ export class MyApp {
   }
 
   doLogout() {
-    this.storage.remove('name').then((val) => {
+    /*this.storage.remove('name').then((val) => {
       console.log('Session is now '+val);
-    });
-    this.storage.set('logged', false);
+    });*/
+    this.storage.clear();
     window.location.reload();
   }
 }

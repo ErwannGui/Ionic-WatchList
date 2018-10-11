@@ -1,0 +1,78 @@
+<!--
+  Generated template for the SubscriptionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Subscription</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<form [formGroup]="credentialsForm">
+
+	<ion-item>
+      <ion-label floating>Firstname</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['firstname']"
+          type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Lastname</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['lastname']"
+          type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['email']"
+          type="email"></ion-input>
+    </ion-item>
+    
+    <div *ngIf="!credentialsForm.controls.email.valid &&
+        credentialsForm.controls.email.dirty"
+        class="validator-error">
+      Please enter a valid email.
+    </div>
+    
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['password']"
+          type="password" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Confirm</ion-label>
+      <ion-input [formControl]="credentialsForm.controls['confirmPassword']"
+          type="password" value=""></ion-input>
+    </ion-item>
+
+    <br><br>
+
+    <div *ngIf="credentialsForm.controls.password.hasError('pattern')" text-center>
+      Passwords should be at least 8 characters long and contain one number,
+      one character and one special character.
+    </div>
+
+    <div *ngIf="error" text-center>
+      Passwords and confirm don't match !
+    </div>
+
+    <br><br>
+
+    <ion-row>
+      <ion-col text-center>
+        <button ion-button block color="light"
+            [disabled]="!credentialsForm.valid"
+            (click)="onFormValidate()">
+          Subscribe
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+</ion-content>

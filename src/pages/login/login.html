@@ -31,7 +31,9 @@
     <div *ngIf="credentialsForm.controls.password.hasError('pattern')">
       Passwords should be at least 8 characters long and contain one number,
       one character and one special character.
-    </div>   
+    </div>
+
+    <br><br>
 
     <ion-row>
       <ion-col text-center>
@@ -39,6 +41,12 @@
             [disabled]="!credentialsForm.valid"
             (click)="onLogin()">
           Login
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button block color="light"
+            (click)="goToPage()">
+          Subscribe
         </button>
       </ion-col>
     </ion-row>
