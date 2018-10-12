@@ -5,7 +5,7 @@ module.exports = function(app) {
     // User Routes
     app.route('/users')
         .get(crud.list_all_users)
-        .post(crud.create_an_user);
+        //.post(crud.create_an_user);
 
     app.route('/users/:userId')
         .get(crud.details_user)

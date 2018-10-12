@@ -27,18 +27,17 @@ var User = new Schema({
 var Comment = new Schema({
     film: {
         type: String,
-        unique: true,
         required: true
     },
     content: {
-        type: String
+        type: String,
+        unique: true
     }
 });
 
 var Favorite = new Schema({
     user_id: {
         type: Number,
-        unique: true,
         required: true
     },
     film: {

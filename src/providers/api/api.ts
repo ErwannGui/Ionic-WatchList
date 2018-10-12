@@ -48,7 +48,7 @@ export class Favorite {
 @Injectable()
 export class ApiProvider {
 
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'http://192.168.1.95:3000';
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');
