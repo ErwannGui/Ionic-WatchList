@@ -2,19 +2,31 @@
 module.exports = function(app) {
     var crud = require('../controllers/crudController');
 
-    // crud Routes
-    app.route('/api/users')
-        .get(crud.list_all_users);
-
-    app.route('/api/new')
+    // User Routes
+    app.route('/users')
+        .get(crud.list_all_users)
         .post(crud.create_an_user);
 
-    app.route('/api/user/:userId')
-        .get(crud.details)
+    app.route('/users/:userId')
+        .get(crud.details_user)
+        .delete(crud.delete_an_user)
+        .put(crud.update_an_user);
 
-    app.route('/api/modify/:userId')
-        .put(crud.update_an_user)
+    // Comment Routes
+    app.route('/comments')
+        .get(crud.list_all_comments)
+        .post(crud.create_a_comment);
 
-    app.route('/api/delete/:userId')
-        .delete(crud.delete_an_user);
+    app.route('/comments/:commentId')
+        .delete(crud.delete_a_comment)
+        .put(crud.update_a_comment);
+
+    // Favorite Routes
+    app.route('/favorites')
+        .get(crud.list_all_favorites)
+        .post(crud.create_a_favorite);
+
+    app.route('/favorites/:favoriteId')
+        .delete(crud.delete_a_favorite)
+        .put(crud.update_a_favorite);
 };

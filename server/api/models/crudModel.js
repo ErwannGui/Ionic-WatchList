@@ -24,4 +24,30 @@ var User = new Schema({
     }
 });
 
+var Comment = new Schema({
+    film: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    content: {
+        type: String
+    }
+});
+
+var Favorite = new Schema({
+    user_id: {
+        type: Number,
+        unique: true,
+        required: true
+    },
+    film: {
+        type: String,
+        unique: true,
+        required: true
+    }
+});
+
 module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Favorite', Favorite);
+module.exports = mongoose.model('Comment', Comment);

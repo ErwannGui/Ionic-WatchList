@@ -9,7 +9,7 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 try {
 	//mongoose.connect('mongodb://localhost:27017/ionic');
-	mongoose.connect('mongodb+srv://ionic:ionic@cours-8uau7.mongodb.net/admin');
+	mongoose.connect('mongodb+srv://ionic:ionic@cours-8uau7.mongodb.net/ionic');
 } catch(error) {
   console.error(error);
 }

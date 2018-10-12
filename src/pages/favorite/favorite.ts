@@ -36,13 +36,15 @@ export class FavoritePage {
       console.log(favorites);
       this.storage.get('id').then(id => {
         console.log(id);
+        let y: number = 0;
         for(let i = 0; i < Object.keys(favorites).length; i++) {
           console.log(favorites[i]);
           if (favorites[i].user == id) {
             this.dataProvider.getFilmById(favorites[i].film)
             .then(film => {
-              this.films[i] = film;
+              this.films[y] = film;
               console.log(this.films);
+              y++
             });
           }
         }
