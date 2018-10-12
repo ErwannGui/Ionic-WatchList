@@ -12,6 +12,7 @@ import { SubscriptionPage } from '../pages/subscription/subscription';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
+import { FavoritePage } from '../pages/favorite/favorite';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { DataProvider } from '../providers/data/data';
     SubscriptionPage,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    FavoritePage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { DataProvider } from '../providers/data/data';
     SubscriptionPage,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    FavoritePage
   ],
   providers: [
     StatusBar,

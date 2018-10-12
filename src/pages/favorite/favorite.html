@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Watchlist</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <button ion-item  *ngFor="let film of films" (click)="itemTapped($event, film.imdbID)">
+        <ion-icon name="star" item-right></ion-icon>
+        {{film.Title}}
+      </button>
+</ion-list>
+</ion-content>

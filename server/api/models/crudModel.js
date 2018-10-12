@@ -7,18 +7,20 @@ var Schema = mongoose.Schema;
 var User = new Schema({
     firstname: {
         type: String,
-        required: 'Prénom'
+        required: true
     },
     lastname: {
         type: String,
-        required: 'Nom'
+        required: true
     },
     email: {
         type: String,
-        required: 'Adresse mail'
+        unique: true,
+        required: true
     },
     password: {
-        type: String
+        type: String,
+        required: true
     }
 });
 

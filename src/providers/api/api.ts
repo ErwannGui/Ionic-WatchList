@@ -14,8 +14,12 @@ export class User {
    lastname: string;
    email: string;
    password: string;
-   constructor(values: Object = {}) {
-        Object.assign(this, values);
+   constructor(id, firstname, lastname, email, password) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
    }
 }
 
@@ -23,8 +27,21 @@ export class Comment {
    id: number;
    film: string;
    content: string;
-   constructor(values: Object = {}) {
-        Object.assign(this, values);
+   constructor(id, film, content) {
+        this.id = id;
+        this.film = film;
+        this.content = content;
+   }
+}
+
+export class Favorite {
+   id: number;
+   user: number;
+   film: string;
+   constructor(id, user, film) {
+        this.id = id;
+        this.user = user;
+        this.film = film;
    }
 }
 
@@ -129,6 +146,38 @@ export class ApiProvider {
   deleteCommentById(commentId: number) {
     return new Promise(resolve => {
 	    this.http.delete(this.apiUrl+'/comments/'+commentId).subscribe( err => {
+	      console.log(err);
+	    });
+  	});
+  }
+
+  // Favorite requests
+
+  getFavorites() {
+    return new Promise(resolve => {
+	    this.http.get(this.apiUrl+'/favorites').subscribe(data => {
+	      resolve(data);
+	      //console.log(data);
+	    }, err => {
+	      console.log(err);
+	    });
+  	});
+  }
+
+  createFavorite(favorite: Favorite) {
+    return new Promise(resolve => {
+	    this.http.post(this.apiUrl+'/favorites', favorite).subscribe(data => {
+	      resolve(data);
+	      //console.log(data);
+	    }, err => {
+	      console.log(err);
+	    });
+  	});
+  }
+
+  deleteFavoriteById(favoriteId: number) {
+    return new Promise(resolve => {
+	    this.http.delete(this.apiUrl+'/favorites/'+favoriteId).subscribe( err => {
 	      console.log(err);
 	    });
   	});

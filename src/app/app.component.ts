@@ -2,11 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
-import { LoggerService } from '../services/logger/logger.service';
-
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
+import { FavoritePage } from '../pages/favorite/favorite';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -41,8 +40,8 @@ export class MyApp {
         this.logged = false;
         this.name = '';
         this.pages = [
-          { title: 'Hello Ionic', component: HelloIonicPage },
-          { title: 'My First List', component: ListPage },
+          { title: 'Homepage', component: HelloIonicPage },
+          { title: 'Films', component: ListPage },
           { title: 'Login', component: LoginPage }
         ];
       } else {
@@ -52,8 +51,9 @@ export class MyApp {
           console.log(this.name+' '+this.logged);
           if (this.logged === true) {
             this.pages = [
-              { title: 'Hello Ionic', component: HelloIonicPage },
-              { title: 'My First List', component: ListPage }
+              { title: 'Homepage', component: HelloIonicPage },
+              { title: 'Films', component: ListPage },
+              { title: 'Favorites', component: FavoritePage }
             ];
           } 
           //this.isLogged(this.name);

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { ApiProvider } from '../../providers/api/api';
+import { ApiProvider, User } from '../../providers/api/api';
 import { LoginPage } from '../../pages/login/login';
 
 /**
@@ -52,21 +52,11 @@ export class SubscriptionPage {
       }
       this.apiProvider.getUsers()
 	    .then(data => {
-	    	nbUsers = data.length;
-	      let newUser: User = {
-		  		"id": nbUsers+1,
-		  		"firstname": firstname,
-		  		"lastname": lastname,
-		  		"email": email,
-		  		"password": password
-		  	};
+	    	nbUsers = Object.keys(data).length;
+		  	let newUser: User = new User(nbUsers+1, firstname, lastname, email, password);
 		  	console.log(newUser);
-		  	this.apiProvider.createUser(newUser)
-		  	.then(data => {
-		  		if (data.email == newUser.email) {
-	    			this.redirectToRoot();
-		  		} else console.log(data);
-		  	});
+		  	this.apiProvider.createUser(newUser);
+  			this.redirectToRoot();
 	    });
     }
   }

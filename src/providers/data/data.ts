@@ -29,4 +29,15 @@ export class DataProvider {
 	    });
   	});
   }
+
+  getFilmById(filmId: string) {
+    return new Promise(resolve => {
+	    this.http.get(this.apiUrl+'?apikey='+this.apiKey+'&i='+filmId).subscribe(data => {
+	      resolve(data);
+	      //console.log(data);
+	    }, err => {
+	      console.log(err);
+	    });
+  	});
+  }
 }

@@ -3,7 +3,7 @@
     <button menuToggle *ngIf="!selectedItem">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Item Details</ion-title>
+    <ion-title *ngIf="selectedItem">Film details</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,19 +16,20 @@
   </ion-refresher>
   <h3 text-center *ngIf="selectedItem">
     {{selectedItem.Title}}
-  </h3>
-  <h4 text-center *ngIf="selectedItem">
-    <b>{{selectedItem.Year}}</b>
-  </h4><br><br>
+  </h3><br>
+  <p padding-left padding-right><b>Year : </b>{{selectedItem.Year}}</p>
+  <p padding-left padding-right><b>Genre : </b>{{selectedItem.Genre}}</p>
+  <p padding-left padding-right><b>Actors : </b>{{selectedItem.Actors}}</p>
   <b padding-left>Synopsis : </b>
-  <p text-center padding style="max-height: 200px; overflow: hidden; text-overflow: ellipsis">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br><br>
-  <span style="width: 100%;">
+  <p text-center padding-left padding-right padding-bottom style="max-height: 200px; overflow: hidden; text-overflow: ellipsis">{{selectedItem.Plot}}</p>
+  <!-- <span style="width: 100%;">
     <ion-icon style="margin-left: calc(40vw);" name="star"></ion-icon>
     <ion-icon name="star"></ion-icon>
     <ion-icon name="star"></ion-icon>
     <ion-icon name="star-half"></ion-icon>
     <ion-icon name="star-outline"></ion-icon>
-  </span>
+  </span> -->
+  <p text-center><strong text-center>{{selectedItem.imdbRating}}/10</strong></p>
 
   <ion-card>
     <ion-card-header>

@@ -10,7 +10,6 @@ import { DataProvider } from '../../providers/data/data';
   templateUrl: 'list.html'
 })
 export class ListPage {
-  items: Array<{}>;
   films: string[];
   nbResult: number;
   error: boolean;
@@ -20,7 +19,6 @@ export class ListPage {
     this.nbResult = 0;
     this.error = false;
     this.films = [];
-    this.items = [];
 
   }
 
@@ -32,23 +30,15 @@ export class ListPage {
         if ( data['Response'] ) {
           this.films = data['Search'];
           this.nbResult = data['totalResults'];
-          //this.setItems();
           //console.log(this.films);
         } else this.error = true;
       });
     } else return;
   }
 
-  setItems() {
-    for(let i = 1; i <= this.nbResult; i++) {
-      this.items[i] = this.films[i];
-      //console.log(this.films[i]);
-    }
-  }
-
-  itemTapped(event, film) {
+  itemTapped(event, filmId) {
     this.navCtrl.push(ItemDetailsPage, {
-      film: film
+      filmId: filmId
     });
   }
 }

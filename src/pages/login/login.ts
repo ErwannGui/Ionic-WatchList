@@ -40,9 +40,10 @@ export class LoginPage {
   getUsers(email: string, password: string) {
     this.apiProvider.getUsers()
     .then(data => {
-      for(let i = 0; i < data.length; i++) {
+      for(let i = 0; i < Object.keys(data).length; i++) {
         if (data[i].email == email && data[i].password == password) {
           console.log(data[i]);
+          this.storage.set('id', data[i].id);
           this.storage.set('name', data[i].firstname);
           this.storage.set('logged', true);
           window.location.reload();

@@ -10,7 +10,7 @@ export class HelloIonicPage {
 	name: string;
 
   constructor(private storage: Storage) {
-  	this.storage.get('name').then((val) => {
+  	this.storage.get('name').then(val => {
 	    console.log('Hello ', val);
 	    this.name = val;
 	  });
