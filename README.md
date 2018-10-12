@@ -17,6 +17,7 @@ PS : Votre API étant lancée en local, pensez à activer le Cross-origin resour
 Vous pouvez télécharger un plugin pour autoriser les requêtes :
 
 Mozilla: https://addons.mozilla.org/fr/firefox/addon/cors-everywhere/?src=search
+
 Chrome: https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related
 
 N'oubliez pas de réactiver la sécurité en désactivant ce plugin sur les autres sites !!
