@@ -33,11 +33,16 @@ export class LoginPage {
     if (this.credentialsForm.valid) {
       let email: string = this.credentialsForm.controls['email'].value;
       let password: string = this.credentialsForm.controls['password'].value;
-      this.getUsers(email, password)
+      this.apiProvider.login(email, password)
+      .then(data => {
+        this.storage.set('token', data['token']);
+        this.storage.set('logged', true);
+      });
+      this.redirectToRoot();
     }
   }
 
-  getUsers(email: string, password: string) {
+  /*getUsers(email: string, password: string) {
     this.apiProvider.getUsers()
     .then(data => {
       for(let i = 0; i < Object.keys(data).length; i++) {
@@ -57,7 +62,7 @@ export class LoginPage {
       //this.setItems();
       //console.log(this.films);
     });
-  }
+  }*/
 
   onForgotPassword() {
     //this.logger.info('LoginPage: onForgotPassword()');

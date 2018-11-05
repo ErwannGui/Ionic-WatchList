@@ -8,11 +8,15 @@ import { Storage } from '@ionic/storage';
 export class HelloIonicPage {
 
 	name: string;
+	token: string
 
   constructor(private storage: Storage) {
   	this.storage.get('name').then(val => {
 	    console.log('Hello ', val);
 	    this.name = val;
+	  });
+	  this.storage.get('token').then(data => {
+	    this.token = data;
 	  });
   }
 }

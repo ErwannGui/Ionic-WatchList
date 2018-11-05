@@ -5,8 +5,17 @@ var express = require('express'),
     Model = require('./api/models/crudModel'), //created model loading here
     bodyParser = require('body-parser');
 
+var fs = require('fs')
+var morgan = require('morgan')
+var cors = require('cors')
+
+app.use(cors())
+
 // mongoose instance connection url connection
-global.__root = __dirname + '/'; 
+global.__root = __dirname + '/';
+
+var logFile = fs.createWriteStream('./api.log', {flags: 'a'});
+
 mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://localhost:27017/ionic');
 mongoose.connect('mongodb+srv://ionic:ionic@cours-8uau7.mongodb.net/ionic', { useNewUrlParser: true });
@@ -19,6 +28,9 @@ MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
    // perform actions on the collection object
    //client.close();
 });*/
+
+app.use(morgan('combined', { stream: logFile }));
+//app.use(morgan('combined'));
 
 var routes = require('./api/routes/crudRoutes'); //importing route
 routes(app); //register the route

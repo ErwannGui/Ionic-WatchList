@@ -48,7 +48,7 @@ export class Favorite {
 @Injectable()
 export class ApiProvider {
 
-  apiUrl = 'http://192.168.1.95:3000';
+  apiUrl = 'http://localhost:3000';
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');
@@ -56,9 +56,42 @@ export class ApiProvider {
 
   // User requests
 
+  login(email: string, password: string) {
+  	return new Promise(resolve => {
+	    this.http.post(this.apiUrl+'/api/auth/login', {email: email, password: password}).subscribe(data => {
+	      resolve(data);
+	      //console.log(data);
+	    }, err => {
+	      console.log(err);
+	    });
+  	});
+  }
+
+  logout() {
+  	return new Promise(resolve => {
+	    this.http.get(this.apiUrl+'/api/auth/logout').subscribe(data => {
+	      resolve(data);
+	      //console.log(data);
+	    }, err => {
+	      console.log(err);
+	    });
+  	});
+  }
+
+  register(user: User) {
+  	return new Promise(resolve => {
+	    this.http.post(this.apiUrl+'/api/auth/register', user).subscribe(data => {
+	      resolve(data);
+	      //console.log(data);
+	    }, err => {
+	      console.log(err);
+	    });
+  	});
+  }
+
   getUsers() {
     return new Promise(resolve => {
-	    this.http.get(this.apiUrl+'/users').subscribe(data => {
+	    this.http.get(this.apiUrl+'/api/users').subscribe(data => {
 	      resolve(data);
 	      //console.log(data);
 	    }, err => {
@@ -69,7 +102,7 @@ export class ApiProvider {
 
   getUserById(userId: number) {
     return new Promise(resolve => {
-	    this.http.get(this.apiUrl+'/users/'+userId).subscribe(data => {
+	    this.http.get(this.apiUrl+'/api/users/'+userId).subscribe(data => {
 	      resolve(data);
 	      //console.log(data);
 	    }, err => {
@@ -80,7 +113,7 @@ export class ApiProvider {
 
   createUser(user: User) {
     return new Promise(resolve => {
-	    this.http.post(this.apiUrl+'/users', user).subscribe(data => {
+	    this.http.post(this.apiUrl+'/api/users', user).subscribe(data => {
 	      resolve(data);
 	      //console.log(data);
 	    }, err => {
@@ -91,7 +124,7 @@ export class ApiProvider {
 
   updateUser(user: User) {
     return new Promise(resolve => {
-	    this.http.put(this.apiUrl+'/users/'+user.id, user).subscribe(data => {
+	    this.http.put(this.apiUrl+'/api/users/'+user.id, user).subscribe(data => {
 	      resolve(data);
 	      //console.log(data);
 	    }, err => {
@@ -102,7 +135,7 @@ export class ApiProvider {
 
   deleteUserById(userId: number) {
     return new Promise(resolve => {
-	    this.http.delete(this.apiUrl+'/users/'+userId).subscribe( err => {
+	    this.http.delete(this.apiUrl+'/api/users/'+userId).subscribe( err => {
 	      console.log(err);
 	    });
   	});

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiProvider, User } from '../../providers/api/api';
 import { LoginPage } from '../../pages/login/login';
 
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the SubscriptionPage page.
  *
@@ -25,6 +26,7 @@ export class SubscriptionPage {
   	public navCtrl: NavController,
     private formBuilder: FormBuilder,
     public apiProvider: ApiProvider,
+    private storage: Storage,
   	public navParams: NavParams) {
 
   	this.credentialsForm = this.formBuilder.group({
@@ -50,14 +52,14 @@ export class SubscriptionPage {
       	console.log('Passwords don\'t match');
       	this.refresh();
       }
-      this.apiProvider.getUsers()
-	    .then(data => {
-	    	nbUsers = Object.keys(data).length;
-		  	let newUser: User = new User(nbUsers+1, firstname, lastname, email, password);
-		  	console.log(newUser);
-		  	this.apiProvider.createUser(newUser);
-  			this.redirectToRoot();
-	    });
+      
+	  	let newUser: User = new User(nbUsers+1, firstname, lastname, email, password);
+	  	console.log(newUser);
+	  	this.apiProvider.register(newUser)
+	  	.then(data => {
+        this.storage.set('token', data['token']);
+      });
+			this.redirectToRoot();
     }
   }
 

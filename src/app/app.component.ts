@@ -6,6 +6,7 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
+import { ApiProvider } from '../providers/api/api';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +30,8 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private storage: Storage
+    private storage: Storage,
+    public apiProvider: ApiProvider
   ) {
     this.initializeApp();
 
@@ -92,5 +94,6 @@ export class MyApp {
     });*/
     this.storage.clear();
     window.location.reload();
+    this.apiProvider.logout();
   }
 }
