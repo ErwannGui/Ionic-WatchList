@@ -1,5 +1,5 @@
 # Ionic-WatchList
-App Ionic avec API node
+App Ionic avec API NodeJS et toke JWT
 
 ##Avant de démarrer : 
   * -> Placez vous a la raçine du projet
