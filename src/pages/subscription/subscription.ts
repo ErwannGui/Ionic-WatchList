@@ -46,7 +46,6 @@ export class SubscriptionPage {
       let email: string = this.credentialsForm.controls['email'].value;
       let password: string = this.credentialsForm.controls['password'].value;
       let confirm: string = this.credentialsForm.controls['confirmPassword'].value;
-      let nbUsers: number = 0;
       if (password != confirm) {
       	this.error = true;
       	console.log('Passwords don\'t match');
