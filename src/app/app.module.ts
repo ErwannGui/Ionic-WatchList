@@ -3,6 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
 import { MyApp } from './app.component';
 
 import { ConsoleLoggerService } from '../services/logger/console-logger.service';
@@ -51,7 +52,8 @@ import { DataProvider } from '../providers/data/data';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: LoggerService, useClass: ConsoleLoggerService },
     ApiProvider,
-    DataProvider
+    DataProvider,
+    Geolocation
   ]
 })
 export class AppModule {}
