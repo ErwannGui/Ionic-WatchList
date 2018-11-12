@@ -13,7 +13,7 @@ Vous pouvez maintenant démarrer l'application ionic !
 
 *ionic serve --local* / *ionic cordova run android*
 
-PS : Votre API étant lancée en local, pensez à activer le Cross-origin resource sharing
+Vous pouvez avoir une erreur concernant l'auteurisations des CORS.
 Vous pouvez télécharger un plugin pour autoriser les requêtes :
 
 Mozilla: https://addons.mozilla.org/fr/firefox/addon/cors-everywhere/?src=search
