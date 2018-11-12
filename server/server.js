@@ -24,7 +24,7 @@ mongoose.connect('mongodb+srv://ionic:ionic@cours-8uau7.mongodb.net/ionic', { us
 
 var uri = "mongodb+srv://ionic:ionic@cours-8uau7.mongodb.net/ionic";
 MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
-   //const collection = client.db("test").collection("devices");
+   //const db = client.db("ionic");
    // perform actions on the collection object
    //client.close();
 });*/
@@ -41,7 +41,7 @@ app.use('/api/users', UserController);
 var AuthController = require(__root + 'api/controllers/authController');
 app.use('/api/auth', AuthController);
 
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(function(req, res) {

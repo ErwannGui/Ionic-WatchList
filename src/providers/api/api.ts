@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -9,13 +9,12 @@ import { Injectable } from '@angular/core';
 */
 
 export class User {
-   id: number;
+   id: string;
    firstname: string;
    lastname: string;
    email: string;
    password: string;
-   constructor(id, firstname, lastname, email, password) {
-        this.id = id;
+   constructor(firstname, lastname, email, password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -48,10 +47,19 @@ export class Favorite {
 @Injectable()
 export class ApiProvider {
 
-  apiUrl = 'http://localhost:3000';
+	apiUrl = 'http://localhost:3000';
+	httpOptions;
+  	
 
   constructor(public http: HttpClient) {
     console.log('Hello ApiProvider Provider');
+
+    this.httpOptions = {
+	  headers: new HttpHeaders({
+	    'Content-Type':  'application/json',
+	    'x-access-token': 'my-auth-token'
+	  })
+	};
   }
 
   // User requests
@@ -85,6 +93,20 @@ export class ApiProvider {
 	      //console.log(data);
 	    }, err => {
 	      console.log(err);
+	    });
+  	});
+  }
+
+  profile(token: string) {
+  	//this.headers.set('Authorization', token);
+  	this.httpOptions.headers = this.httpOptions.headers.set('x-access-token', token);
+  	//console.log(this.httpOptions.headers.get('x-access-token'));
+  	return new Promise(resolve => {
+	    this.http.get(this.apiUrl+'/api/auth/profile', this.httpOptions).subscribe(data => {
+	      resolve(data);
+	      //console.log(data);
+	    }, err => {
+	      console.error(err);
 	    });
   	});
   }

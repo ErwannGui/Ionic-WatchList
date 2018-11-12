@@ -35,8 +35,10 @@ export class LoginPage {
       let password: string = this.credentialsForm.controls['password'].value;
       this.apiProvider.login(email, password)
       .then(data => {
-        this.storage.set('token', data['token']);
-        this.storage.set('logged', true);
+        if (data['auth'] == true) {
+          this.storage.set('token', data['token']);
+          this.storage.set('logged', true);
+        } else console.log(data);
       });
       this.redirectToRoot();
     }

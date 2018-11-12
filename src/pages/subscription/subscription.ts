@@ -53,7 +53,7 @@ export class SubscriptionPage {
       	this.refresh();
       }
       
-	  	let newUser: User = new User(nbUsers+1, firstname, lastname, email, password);
+	  	let newUser: User = new User(firstname, lastname, email, password);
 	  	console.log(newUser);
 	  	this.apiProvider.register(newUser)
 	  	.then(data => {
