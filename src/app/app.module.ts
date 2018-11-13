@@ -14,11 +14,14 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
+import { ChatPage } from '../pages/chat/chat';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../providers/api/api';
 import { DataProvider } from '../providers/data/data';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -28,13 +31,15 @@ import { DataProvider } from '../providers/data/data';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    FavoritePage
+    FavoritePage,
+    ChatPage,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    SocketIoModule.forRoot(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +49,8 @@ import { DataProvider } from '../providers/data/data';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    FavoritePage
+    FavoritePage,
+    ChatPage
   ],
   providers: [
     StatusBar,

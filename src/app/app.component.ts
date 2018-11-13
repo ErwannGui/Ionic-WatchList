@@ -6,6 +6,7 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
+import { ChatPage } from '../pages/chat/chat';
 import { ApiProvider } from '../providers/api/api';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -36,7 +37,7 @@ export class MyApp {
     this.initializeApp();
 
     this.storage.get('logged').then((val) => {
-      console.log(val);
+      console.log('Logged : '+val);
       if (val !== true) {
         console.log('No session defined '+val);
         this.logged = false;
@@ -55,7 +56,8 @@ export class MyApp {
             this.pages = [
               { title: 'Homepage', component: HelloIonicPage },
               { title: 'Films', component: ListPage },
-              { title: 'Favorites', component: FavoritePage }
+              { title: 'Favorites', component: FavoritePage },
+              { title: 'Chat', component: ChatPage }
             ];
           } 
           //this.isLogged(this.name);

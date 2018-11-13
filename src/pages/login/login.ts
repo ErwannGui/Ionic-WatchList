@@ -8,7 +8,6 @@ import { SubscriptionPage } from '../../pages/subscription/subscription';
 
 import { Storage } from '@ionic/storage';
 
-//@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'

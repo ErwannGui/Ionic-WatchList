@@ -27,24 +27,16 @@ export class HelloIonicPage {
 			  .then(data => {
 			  	console.log(data);
 			  	this.name = data['firstname'];
-		      this.storage.set('name', data['firstname']);
+		      this.storage.set('username', data['email']);
 		    });
 		  }
 	  });
 
 	  this.geolocation.getCurrentPosition().then(res => {
-		 res.coords.latitude;
-		 res.coords.longitude;
+		 console.log(res.coords.latitude);
+		 console.log(res.coords.longitude);
 		}).catch(error => {
 		  console.log('Error getting location', error);
 		});
-
-		/*let watch = this.geolocation.watchPosition();
-		watch.subscribe(data => {
-		 // data can be a set of coordinates, or an error (if an error occurred).
-		 // data.coords.latitude
-		 // data.coords.longitude
-		  console.log(data.coords.longitude + ' ' + data.coords.latitude);
-		});*/
   }
 }
