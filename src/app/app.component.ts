@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
 import { ChatPage } from '../pages/chat/chat';
+import { CameraPage } from '../pages/camera/camera';
 import { ApiProvider } from '../providers/api/api';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -45,7 +46,8 @@ export class MyApp {
         this.pages = [
           { title: 'Homepage', component: HelloIonicPage },
           { title: 'Films', component: ListPage },
-          { title: 'Login', component: LoginPage }
+          { title: 'Login', component: LoginPage },
+          { title: 'Photos', component: CameraPage }
         ];
       } else {
         this.storage.get('name').then((value) => {
@@ -57,7 +59,8 @@ export class MyApp {
               { title: 'Homepage', component: HelloIonicPage },
               { title: 'Films', component: ListPage },
               { title: 'Favorites', component: FavoritePage },
-              { title: 'Chat', component: ChatPage }
+              { title: 'Chat', component: ChatPage },
+              { title: 'Photos', component: CameraPage }
             ];
           } 
           //this.isLogged(this.name);

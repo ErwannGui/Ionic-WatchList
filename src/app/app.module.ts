@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 
 import { ConsoleLoggerService } from '../services/logger/console-logger.service';
@@ -15,6 +16,7 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
 import { ChatPage } from '../pages/chat/chat';
+import { CameraPage } from '../pages/camera/camera';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +34,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ItemDetailsPage,
     ListPage,
     FavoritePage,
-    ChatPage
+    ChatPage,
+    CameraPage,
   ],
   imports: [
     BrowserModule,
@@ -50,11 +53,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ItemDetailsPage,
     ListPage,
     FavoritePage,
-    ChatPage
+    ChatPage,
+    CameraPage
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen,Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: LoggerService, useClass: ConsoleLoggerService },
     ApiProvider,
