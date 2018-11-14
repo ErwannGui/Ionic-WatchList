@@ -122,13 +122,19 @@ export class ChatPage {
 
 
 @Component({
-  template: `
-    <ion-tabs class="tabs-basic">
-      <ion-tab tabTitle="Music" [root]="rootPage"></ion-tab>
-      <ion-tab tabTitle="Movies" [root]="rootPage"></ion-tab>
-      <ion-tab tabTitle="Games" [root]="rootPage"></ion-tab>
-    </ion-tabs>
+  templateUrl: `
+	  <ion-tabs selectedIndex="1" color="primary" style="margin-top: 48px!important;">
+	    <ion-tab tabTitle="Global" [root]="global" tabBadge="0"></ion-tab>
+	    <ion-tab *ngFor="let room of rooms" tabTitle="{{ room }}" [root]="{{ room }}" [tabBadge]="0"></ion-tab>
+		</ion-tabs>
 `})
-export class BasicPage {
-  rootPage = TabBasicContentPage;
+export class TabsPage {
+
+  global = ChatPage;
+
+  rooms = ['global'];
+
+  constructor() {
+
+  }
 }

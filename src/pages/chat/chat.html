@@ -12,10 +12,6 @@
     </button>
     <ion-title>Chat</ion-title>
   </ion-navbar>
-  <ion-tabs selectedIndex="1" color="primary" style="margin-top: 48px!important;">
-    <ion-tab tabTitle="Global" [root]="root" tabBadge="0"></ion-tab>
-    <ion-tab *ngFor="let room of rooms" tabTitle="{{ room }}" [root]="root" [tabBadge]="0"></ion-tab>
-	</ion-tabs>
 </ion-header>
 
 

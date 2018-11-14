@@ -32,7 +32,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ItemDetailsPage,
     ListPage,
     FavoritePage,
-    ChatPage,
+    ChatPage
   ],
   imports: [
     BrowserModule,

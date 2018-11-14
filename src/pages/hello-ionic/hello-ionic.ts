@@ -27,7 +27,7 @@ export class HelloIonicPage {
 			  .then(data => {
 			  	console.log(data);
 			  	this.name = data['firstname'];
-		      this.storage.set('username', data['email']);
+		      this.storage.set('username', data['email'].substring(0, data['email'].lastIndexOf("@")));
 		    });
 		  }
 	  });
