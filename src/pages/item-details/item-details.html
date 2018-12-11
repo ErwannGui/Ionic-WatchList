@@ -36,11 +36,11 @@
       Comments :
     </ion-card-header>
     <ion-card-content>
-      <span text-center color="danger" *ngIf="error">{{error}}</span>
+      <!-- <span text-center color="danger" *ngIf="error">{{error}}</span> -->
       <ion-list>
 
         <button ion-item *ngFor="let comment of comments">
-          <ion-icon name="trash" item-right (click)="doConfirm(comment)"></ion-icon>
+          <ion-icon *ngIf="logged" name="trash" item-right (click)="doConfirm(comment)"></ion-icon>
           {{comment.content}}
         </button>
         <form [formGroup]="commentForm">

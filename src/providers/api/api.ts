@@ -47,7 +47,7 @@ export class Favorite {
 @Injectable()
 export class ApiProvider {
 
-	apiUrl = 'http://localhost:3000';
+	apiUrl = 'http://10.44.1.10:3000';
 	httpOptions;
   	
 

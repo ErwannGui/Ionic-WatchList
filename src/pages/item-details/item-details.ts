@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 
 import { ApiProvider, Comment } from '../../providers/api/api';
 import { DataProvider } from '../../providers/data/data';
@@ -17,6 +18,7 @@ export class ItemDetailsPage {
   nbComments: number;
   commentForm: FormGroup;
   filmId: string;
+  logged: boolean;
 
   constructor(
   	public navCtrl: NavController,
@@ -24,6 +26,7 @@ export class ItemDetailsPage {
   	public apiProvider: ApiProvider,
   	public dataProvider: DataProvider,
   	public alertCtrl: AlertController,
+  	private storage: Storage,
   	private formBuilder: FormBuilder) {
     // If we navigated to this page, we will have an item available as a nav param
 
@@ -34,8 +37,10 @@ export class ItemDetailsPage {
     this.nbComments = 0;
     this.comments = [];
     this.commentForm = this.formBuilder.group({commentContent: ['']});
-
-    this.getComments(this.filmId);
+    this.storage.get('logged').then( val => {
+      this.logged = val;
+    });
+  	this.getComments(this.filmId);
   }
 
   getData() {

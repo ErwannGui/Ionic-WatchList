@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import { AES256 } from '@ionic-native/aes-256';
 import { MyApp } from './app.component';
 
 import { ConsoleLoggerService } from '../services/logger/console-logger.service';
@@ -17,13 +18,15 @@ import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
 import { ChatPage } from '../pages/chat/chat';
 import { CameraPage } from '../pages/camera/camera';
+import { ExpandableComponent } from '../components/expandable/expandable';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiProvider } from '../providers/api/api';
 import { DataProvider } from '../providers/data/data';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+import { CryptoProvider } from '../providers/crypto/crypto';
+var config: SocketIoConfig = { url: 'http://10.44.1.10:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     FavoritePage,
     ChatPage,
     CameraPage,
+    ExpandableComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,12 +62,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   ],
   providers: [
     StatusBar,
-    SplashScreen,Camera,
+    SplashScreen,Camera, AES256,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: LoggerService, useClass: ConsoleLoggerService },
     ApiProvider,
     DataProvider,
-    Geolocation
-  ]
+    CryptoProvider,
+    Geolocation,
+  ],
+  exports: [ExpandableComponent]
 })
 export class AppModule {}

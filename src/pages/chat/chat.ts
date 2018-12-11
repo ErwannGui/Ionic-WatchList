@@ -21,6 +21,9 @@ export class ChatPage {
   message = '';
   target = '';
   rooms = [];
+  clients = [];
+  expanded: boolean;
+  itemExpandHeight: number;
 
   constructor(
   	public navCtrl: NavController,
@@ -29,12 +32,24 @@ export class ChatPage {
   	private storage: Storage,
   	private toastCtrl: ToastController) {
 
+  	this.expanded = false;
+  	this.itemExpandHeight = 100;
+
   	this.rooms = ['global'];
 
-  	this.storage.get('username').then(data => {
+  	this.storage.get('name').then(data => {
   		this.nickname = data;
     	this.socket.emit('set-nickname', this.nickname);
   	});
+
+  	this.getAllClients().subscribe(clientlist => {
+  		for (var i = 0; i < Object.keys(clientlist).length; i++) {
+  			var index = this.clients.indexOf(clientlist[i]);
+      	if (index > -1) {
+				  this.clients.push(clientlist[i]);
+				}
+  		}
+    });
  
     this.getMessages().subscribe(message => {
       this.messages.push(message);
@@ -49,11 +64,28 @@ export class ChatPage {
     this.getUsers().subscribe(data => {
       let user = data['user'];
       if (data['event'] === 'left') {
+      	let index = this.clients.indexOf(user);
+      	if (index > -1) {
+				  this.clients.splice(index, 1);
+				}
         this.showToast('User left: ' + user);
       } else {
+      	let index = this.clients.indexOf(user);
+      	if (index > -1) {
+				  this.clients.splice(index, 1);
+				}
         this.showToast('User joined: ' + user);
       }
     });
+  }
+
+  getAllClients() {
+  	let observable = new Observable(observer => {
+      this.socket.on('clients', (data) => {
+        observer.next(data);
+      });
+    });
+    return observable;
   }
 
   joinRoom() {
@@ -69,7 +101,7 @@ export class ChatPage {
  
   sendMessage() {
   	if (this.target !== ''){
-  		this.socket.emit('private-message',{ target: this.target, text: this.message });
+  		this.socket.emit('add-private-message',{ target: this.target, text: this.message });
   	} else this.socket.emit('add-message', { text: this.message });
     this.message = '';
   }
@@ -85,7 +117,7 @@ export class ChatPage {
 
   getPrivateMsg() {
   	let observable = new Observable(observer => {
-      this.socket.on('private', (data) => {
+      this.socket.on('private-message', (data) => {
         observer.next(data);
       });
     })
@@ -99,6 +131,10 @@ export class ChatPage {
       });
     });
     return observable;
+  }
+
+  expandItem(){
+    this.expanded = !this.expanded;
   }
  
   ionViewWillLeave() {
@@ -121,7 +157,7 @@ export class ChatPage {
 }
 
 
-@Component({
+/*@Component({
   templateUrl: `
 	  <ion-tabs selectedIndex="1" color="primary" style="margin-top: 48px!important;">
 	    <ion-tab tabTitle="Global" [root]="global" tabBadge="0"></ion-tab>
@@ -137,4 +173,4 @@ export class TabsPage {
   constructor() {
 
   }
-}
+}*/

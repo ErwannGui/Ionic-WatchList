@@ -49,6 +49,9 @@
 </ion-content>
 
 <ion-footer>
+	<expandable [expandHeight]="itemExpandHeight" [expanded]="expanded" (click)="expandItem()">
+	  Hello people
+	</expandable>
   <ion-toolbar>
     <ion-row class="message_row">
     	<ion-col col-3>
