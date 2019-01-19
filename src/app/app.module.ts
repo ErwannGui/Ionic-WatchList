@@ -5,7 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AES256 } from '@ionic-native/aes-256';
+import { GoogleMaps } from '@ionic-native/google-maps';
 import { MyApp } from './app.component';
 
 import { ConsoleLoggerService } from '../services/logger/console-logger.service';
@@ -18,6 +20,7 @@ import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
 import { ChatPage } from '../pages/chat/chat';
 import { CameraPage } from '../pages/camera/camera';
+import { QrReaderPage } from '../pages/qr-reader/qr-reader';
 import { ExpandableComponent } from '../components/expandable/expandable';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,7 +29,7 @@ import { ApiProvider } from '../providers/api/api';
 import { DataProvider } from '../providers/data/data';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { CryptoProvider } from '../providers/crypto/crypto';
-var config: SocketIoConfig = { url: 'http://10.44.1.10:3000', options: {} };
+var config: SocketIoConfig = { url: 'http://127.0.0.1:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -39,6 +42,7 @@ var config: SocketIoConfig = { url: 'http://10.44.1.10:3000', options: {} };
     FavoritePage,
     ChatPage,
     CameraPage,
+    QrReaderPage,
     ExpandableComponent,
   ],
   imports: [
@@ -58,11 +62,12 @@ var config: SocketIoConfig = { url: 'http://10.44.1.10:3000', options: {} };
     ListPage,
     FavoritePage,
     ChatPage,
-    CameraPage
+    CameraPage,
+    QrReaderPage
   ],
   providers: [
     StatusBar,
-    SplashScreen,Camera, AES256,
+    SplashScreen, Camera, BarcodeScanner, AES256, GoogleMaps,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: LoggerService, useClass: ConsoleLoggerService },
     ApiProvider,

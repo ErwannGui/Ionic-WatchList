@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { FavoritePage } from '../pages/favorite/favorite';
 import { ChatPage } from '../pages/chat/chat';
 import { CameraPage } from '../pages/camera/camera';
+import { QrReaderPage } from '../pages/qr-reader/qr-reader';
 import { ApiProvider } from '../providers/api/api';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -47,7 +48,8 @@ export class MyApp {
           { title: 'Homepage', component: HelloIonicPage },
           { title: 'Films', component: ListPage },
           { title: 'Login', component: LoginPage },
-          { title: 'Photos', component: CameraPage }
+          { title: 'Photos', component: CameraPage },
+          { title: 'QR Reader', component: QrReaderPage }
         ];
       } else {
         this.storage.get('name').then((value) => {
@@ -60,7 +62,8 @@ export class MyApp {
               { title: 'Films', component: ListPage },
               { title: 'Favorites', component: FavoritePage },
               { title: 'Chat', component: ChatPage },
-              { title: 'Photos', component: CameraPage }
+              { title: 'Photos', component: CameraPage },
+              { title: 'QR Reader', component: QrReaderPage }
             ];
           } 
           //this.isLogged(this.name);
