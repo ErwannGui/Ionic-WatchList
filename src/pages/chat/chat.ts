@@ -37,7 +37,7 @@ export class ChatPage {
 
   	this.rooms = ['global'];
 
-  	this.storage.get('name').then(data => {
+  	this.storage.get('username').then(data => {
   		this.nickname = data;
     	this.socket.emit('set-nickname', this.nickname);
   	});

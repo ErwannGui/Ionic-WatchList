@@ -1,12 +1,12 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
-/*import {
+import {
   GoogleMaps,
   GoogleMap,
   LatLng,
   GoogleMapsEvent,
-} from '@ionic-native/google-maps';*/
+} from '@ionic-native/google-maps';
 
 import { ApiProvider } from '../../providers/api/api';
 import { CryptoProvider } from '../../providers/crypto/crypto';
@@ -20,8 +20,8 @@ import { Platform } from 'ionic-angular/index';
 export class HelloIonicPage {
 
 	@ViewChild('map') mapElement: ElementRef;
-	//private map: GoogleMap;
-  //private location: LatLng;
+	private map: GoogleMap;
+  private location: LatLng;
 	name: string;
 	token: string;
 	data: string;
@@ -33,9 +33,9 @@ export class HelloIonicPage {
   	public cryptoProvider: CryptoProvider,
   	private platform: Platform,
   	private storage: Storage,
-  	private geolocation: Geolocation
+  	private geolocation: Geolocation,
+  	private googleMaps: GoogleMaps
   	) {
-  	/*private googleMaps: GoogleMaps*/
 
 	  this.storage.get('token').then(data => {
 	    this.token = data;
@@ -61,13 +61,13 @@ export class HelloIonicPage {
 	  this.geolocation.getCurrentPosition().then(res => {
 		 	console.log(res.coords.latitude);
 		 	console.log(res.coords.longitude);
-		 	//this.location = new LatLng(res.coords.latitude, res.coords.longitude);
+		 	this.location = new LatLng(res.coords.latitude, res.coords.longitude);
 	  }).catch(error => {
 		  console.log('Error getting location', error);
 		});
   }
 	
-	/*addMarker() {
+	addMarker() {
 	  this.map.addMarker({
 	    title: 'Vous êtes ici !',
 	    icon: 'red',
@@ -82,23 +82,25 @@ export class HelloIonicPage {
 	      alert('Bienvenue chez moi !!');
 	    });
 	  });
-	}*/
+	}
 
   ionViewDidLoad() {
-	  /*this.platform.ready().then(() => {
-	    let element = this.mapElement.nativeElement;
-	    this.map = this.googleMaps.create(element);
-	 
-	    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-	      let options = {
-	        target: this.location,
-	        zoom: 12
-	      };
-	 
-	      this.map.moveCamera(options);
-	      setTimeout(500);
-	    	this.addMarker();
-	    });
-	  });*/
+  	if (this.platform.is('cordova')) {
+		  this.platform.ready().then(() => {
+		    let element = this.mapElement.nativeElement;
+		    this.map = this.googleMaps.create(element);
+		 
+		    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+		      let options = {
+		        target: this.location,
+		        zoom: 12
+		      };
+		 
+		      this.map.moveCamera(options);
+		      setTimeout(500);
+		    	this.addMarker();
+		    });
+		  });
+		}
 	}
 }
