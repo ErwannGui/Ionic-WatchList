@@ -25,10 +25,12 @@ export class User {
 export class Comment {
    id: number;
    film: string;
+   user: number;
    content: string;
-   constructor(id, film, content) {
+   constructor(id, film, user, content) {
         this.id = id;
         this.film = film;
+        this.user = user;
         this.content = content;
    }
 }

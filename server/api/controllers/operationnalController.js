@@ -63,13 +63,14 @@ router.get('/snapshot/:id', function (req, res) {
     }`;
     
     var options = {
-        url: `http://${url}/api/atlas/v1.0/groups/${project_id}cluster/clusters/${cluster_id}/restoreJobs`,
+        url: `http://${url}/api/atlas/v1.0/groups/${project_id}/clusters/${cluster_id}/restoreJobs`,
         method: 'POST',
         headers: headers,
         body: dataString,
         auth: {
             user: username,
-            pass: apiKey
+            pass: apiKey,
+            sendImmediately: false
         }
     };
     
@@ -90,7 +91,8 @@ router.get('/snapshot/retrieveLink', function (req, res) {
         url: `http://${url}/api/public/v1.0/groups/${project_id}/clusters/${cluster_id}/restoreJobs`,
         auth: {
             user: username,
-            pass: apiKey
+            pass: apiKey,
+            sendImmediately: false
         }
     };
     
@@ -111,7 +113,8 @@ router.get('/automationConfig', function (req, res) {
         url: `http://${url}/api/public/v1.0/groups/${project_id}/automationConfig`,
         auth: {
             user: username,
-            pass: apiKey
+            pass: apiKey,
+            sendImmediately: false
         }
     };
     
@@ -142,7 +145,8 @@ router.post('/automationConfig', function (req, res) {
         body: dataString,
         auth: {
             user: username,
-            pass: apiKey
+            pass: apiKey,
+            sendImmediately: false
         }
     };
     
@@ -164,7 +168,8 @@ router.get('/checkdeploymentstatus', function (req, res) {
         url: `http://${url}/api/public/v1.0/groups/${project_id}/automationStatus`,
         auth: {
             user: username,
-            pass: apiKey
+            pass: apiKey,
+            sendImmediately: false
         }
     };
     

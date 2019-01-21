@@ -80,7 +80,7 @@ export class ItemDetailsPage {
 
   createComment() {
   	let content = this.commentForm.controls['commentContent'].value;
-  	let newComment: Comment = new Comment(this.nbComments+1, this.filmId, content);
+  	let newComment: Comment = new Comment(this.nbComments+1, this.filmId, '5bc0eae4b2bee12fbce44ac0', content);
   	console.log(newComment);
   	this.apiProvider.createComment(newComment);
   	//this.doRefresh();

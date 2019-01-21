@@ -32,6 +32,10 @@ var Comment = new Schema({
         type: String,
         required: true
     },
+    user_id: {
+        type: Number,
+        required: true
+    },
     content: {
         type: String,
         unique: true
