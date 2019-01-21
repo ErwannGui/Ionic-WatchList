@@ -1,3 +1,6 @@
+global.rights = undefined;
+global.__root = __dirname + '/';
+
 var express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
@@ -79,13 +82,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-
-// mongoose instance connection url connection
-global.__root = __dirname + '/';
-
 var logFile = fs.createWriteStream('./api.log', {flags: 'a'});
 
-db.connect('ionic', 'ionic');
+db.authToMongo();
 
 /*mongoose.Promise = global.Promise;
 //mongoose.connect('mongodb://localhost:27017/ionic');
@@ -116,6 +115,9 @@ app.use('/api/users', UserController);
 
 var AuthController = require(__root + 'api/controllers/authController');
 app.use('/api/auth', AuthController);
+
+var operationnalController = require(__root + 'api/controllers/operationnalController');
+app.use('/api/ops', operationnalController);
 
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
