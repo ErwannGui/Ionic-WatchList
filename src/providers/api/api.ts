@@ -49,7 +49,7 @@ export class Favorite {
 @Injectable()
 export class ApiProvider {
 
-	apiUrl = 'http://10.44.1.10:3000';
+	apiUrl = 'https://api-ionic-watchlist.herokuapp.com';
 	httpOptions;
   	
 

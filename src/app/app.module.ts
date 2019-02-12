@@ -29,7 +29,7 @@ import { ApiProvider } from '../providers/api/api';
 import { DataProvider } from '../providers/data/data';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { CryptoProvider } from '../providers/crypto/crypto';
-var config: SocketIoConfig = { url: 'http://10.44.1.10:3000', options: {} };
+var config: SocketIoConfig = { url: 'https://api-ionic-watchlist.herokuapp.com', options: {} };
 
 @NgModule({
   declarations: [
